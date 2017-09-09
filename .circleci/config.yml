@@ -2,4 +2,4 @@ jobs:
   build:
     machine: true
     steps:
-      - run: :
+      - run: w
