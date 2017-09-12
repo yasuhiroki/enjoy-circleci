@@ -1,5 +1,5 @@
 jobs:
   build:
-    machine: true
+    macos: true
     steps:
       - run: w
