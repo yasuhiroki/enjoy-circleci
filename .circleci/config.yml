@@ -1,7 +1,5 @@
 jobs:
   build:
-    machine:
-      xcode:
-        version: 8.3
+    machine: learning
     steps:
       - run: uname
