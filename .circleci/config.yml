@@ -1,5 +1,6 @@
 jobs:
   build:
-    machine: learning
+    machine:
+      learning: true
     steps:
       - run: uname
