@@ -2,6 +2,6 @@ jobs:
   build:
     macos:
       xcode:
-        version: 8.3.1
+        version: 8.3
     steps:
       - run: w
