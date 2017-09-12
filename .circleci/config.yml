@@ -4,4 +4,4 @@ jobs:
       xcode:
         version: 8.3
     steps:
-      - run: w
+      - run: uname
