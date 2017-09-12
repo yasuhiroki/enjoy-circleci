@@ -1,5 +1,7 @@
 jobs:
   build:
-    macos: true
+    macos:
+      xcode:
+        version: 9.0
     steps:
       - run: w
