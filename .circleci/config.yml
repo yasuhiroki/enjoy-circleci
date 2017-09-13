@@ -1,0 +1,13 @@
+version: 2
+
+jobs:
+  build: &job
+    docker:
+      - image: docker:17.05.0-ce-git
+    steps:
+      - run: w
+
+workflows:
+  version: 2
+  1:
+    <<: *job
