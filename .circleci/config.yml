@@ -5,9 +5,4 @@ jobs:
     docker:
       - image: docker:17.05.0-ce-git
     steps:
-      - run: w
-
-workflows:
-  version: 2
-  1:
-    <<: *job
+      - run: uname
