@@ -12,4 +12,10 @@ workflows:
   build:
     jobs:
       - build
+      - build
+      - build
+      - build
+      - build
+      - build
+      - build
 
