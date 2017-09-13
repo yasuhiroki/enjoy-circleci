@@ -9,6 +9,6 @@ jobs:
 
 workflows:
   version: 2
-  build:
+  1:
     jobs:
-      - <<: *job
+      - build
