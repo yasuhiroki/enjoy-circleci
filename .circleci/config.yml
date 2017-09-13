@@ -7,13 +7,13 @@ jobs:
     steps:
       - run: uname
   build2:
-    << *job
+    <<: *job
   build3:
-    << *job
+    <<: *job
   build4:
-    << *job
+    <<: *job
   build5:
-    << *job
+    <<: *job
 
 
 workflows:
