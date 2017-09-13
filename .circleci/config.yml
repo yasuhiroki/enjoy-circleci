@@ -24,13 +24,13 @@ workflows:
       - build2:
           requires:
             - build1
-      - build3
+      - build3:
           requires:
             - build1
-      - build4
+      - build4:
           requires:
             - build5
-      - build5
+      - build5:
           requires:
             - build1
 
