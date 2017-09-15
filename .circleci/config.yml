@@ -31,13 +31,14 @@ workflows:
             branches:
               only:
                 - workflow
-      - should_not_build3:
+      - no_should_not_build3:
           requires:
             - build1
           filters:
             branches:
               only:
                 - master
+                - workflow
       - build4:
           requires:
             - build5
