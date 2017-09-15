@@ -27,6 +27,15 @@ workflows:
       - build3:
           requires:
             - build1
+          filters:
+            only:
+              - workflow
+      - should_not_build3:
+          requires:
+            - build1
+          filters:
+            only:
+              - master
       - build4:
           requires:
             - build5
