@@ -28,14 +28,16 @@ workflows:
           requires:
             - build1
           filters:
-            only:
-              - workflow
+            branches:
+              only:
+                - workflow
       - should_not_build3:
           requires:
             - build1
           filters:
-            only:
-              - master
+            branches:
+              only:
+                - master
       - build4:
           requires:
             - build5
