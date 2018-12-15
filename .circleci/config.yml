@@ -11,10 +11,22 @@ orbs:
     commands:
       install:
         steps:
-          - run: echo "We will now do special things"
+          - restore_cache:
+              keys:
+                - reviewdog-0.9.8
+          - run: |
+              test -f /usr/local/bin/reviewdog \
+                || \
+              wget https://github.com/haya14busa/reviewdog/releases/download/0.9.8/reviewdog_linux_amd64 -O /usr/local/bin/reviewdog \
+                && \
+              chmod +x /usr/local/bin/reviewdog
+          - save_cache:
+              key: reviewdog-0.9.8
+        paths:
+          - /usr/local/bin/reviewdog
       reviewdog:
         steps:
-          - run: echo "reviewdog"
+          - run: reviewdog --help
     jobs:
       reviewdog:
         executor: reviewdog
