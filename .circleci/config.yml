@@ -42,7 +42,9 @@ orbs:
             description: Linter executable image
             type: string
             default: alpine:latest
-        executor: default
+        executor:
+          name: default
+          linter_image: <<parameters.linter_image>>
         steps:
           - steps: <<parameters.run_linter_steps>>
           - install
