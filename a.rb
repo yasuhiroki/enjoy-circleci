@@ -1,5 +1,5 @@
 p "hoge"
 
 def foo val
-  p 'piyo'
+  p "piyo"
 end
