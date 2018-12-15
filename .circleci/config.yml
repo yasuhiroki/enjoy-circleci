@@ -1,5 +1,3 @@
-description: # The purpose of this orb
-
 orbs:
   reviewdog: yasuhiroki/reviewdog@dev:first
 
