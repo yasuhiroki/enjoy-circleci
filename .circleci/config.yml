@@ -3,31 +3,24 @@ description: # The purpose of this orb
 orbs:
   yasuhiroki:
     executors:
-      reviewdog:
+      default:
         docker:
           - image: alpine:latest
     commands:
       install:
         steps:
-          - restore_cache:
-              keys:
-                - reviewdog-0.9.8
           - run: |
-              test -f ./reviewdog \
+              test -f /usr/local/bin/reviewdog \
                 || \
-              wget https://github.com/haya14busa/reviewdog/releases/download/0.9.8/reviewdog_linux_amd64 -O ./reviewdog \
+              wget https://github.com/haya14busa/reviewdog/releases/download/0.9.11/reviewdog_linux_amd64 -O /usr/local/bin/reviewdog \
                 && \
-              chmod +x ./reviewdog
-          - save_cache:
-              key: reviewdog-0.9.8
-              paths:
-                - ./reviewdog
+              chmod +x /usr/local/bin/reviewdog
       reviewdog:
         steps:
-          - run: reviewdog --help
+          - run: ./reviewdog --help
     jobs:
       reviewdog:
-        executor: reviewdog
+        executor: default
         steps:
           - install
           - reviewdog
