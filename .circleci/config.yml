@@ -5,7 +5,9 @@ orbs:
     executors:
       default:
         docker:
-          - image: alpine:latest
+          # - image: alpine:latest
+          # TODO: Changable
+          - image: ruby:2.5-alpine
     commands:
       install:
         steps:
@@ -16,18 +18,49 @@ orbs:
                 && \
               chmod +x /usr/local/bin/reviewdog
       reviewdog:
+        parameters:
+          lint_result_file_path:
+            description: Lint result file path
+            type: string
         steps:
-          - run: echo $PATH
-          - run: cat lint-result.txt | reviewdog -f=rubocop -reporter=github-pr-review
+          - run: |
+              test ${CI_PULL_REQUEST} || exit 0
+              cat <<parameters.lint_result_file_path>> | reviewdog -f=rubocop -reporter=github-pr-review
     jobs:
       reviewdog:
+        parameters:
+          run_linter_steps:
+            description: Run linter steps
+            type: steps
+          lint_result_file_path:
+            description: Lint result file path
+            type: string
         executor: default
         steps:
+          - steps: <<parameters.run_linter_steps>>
           - install
-          - reviewdog
+          - reviewdog:
+              lint_result_file_path: <<parameters.lint_result_file_path>>
+
+commands:
+  lint:
+    parameters:
+      lint_result_file_path:
+        description: Lint result file path
+        type: string
+    steps:
+      - checkout
+      - run: gem install rubocop
+      - run: rubocop --out <<parameters.lint_result_file_path>> || true
+      - store_artifacts:
+          path: <<parameters.lint_result_file_path>>
 
 version: 2.1
 workflows:
   main:
     jobs:
-      - yasuhiroki/reviewdog
+      - yasuhiroki/reviewdog:
+          run_linter_steps:
+            - lint:
+                lint_result_file_path: res.txt
+          lint_result_file_path: res.txt
