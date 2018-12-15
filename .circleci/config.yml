@@ -21,6 +21,7 @@ workflows:
     jobs:
       - reviewdog/reviewdog:
           linter_image: cagedata/rubocop
+          reviewdog_format_option: -f=rubocop
           run_linter_steps:
             - lint:
                 lint_result_file_path: res.txt
