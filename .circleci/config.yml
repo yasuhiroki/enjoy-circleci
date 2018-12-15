@@ -1,0 +1,29 @@
+description: # The purpose of this orb
+
+orbs:
+  yasuhiroki:
+    orbs:
+      reviewdog: yasuhrioki/reviewdog@dev
+    executors:
+      reviewdog:
+        docker:
+          - image: alpine:latest
+    commands:
+      install:
+        steps:
+          - run: echo "We will now do special things"
+      reviewdog:
+        steps:
+          - run: echo "reviewdog"
+    jobs:
+      reviewdog:
+        executor: reviewdog
+        steps:
+          - install
+          - reviewdog
+
+version: 2.1
+workflows:
+  main:
+    jobs:
+      - yasuhiroki/reviewdog
