@@ -7,7 +7,7 @@ orbs:
         docker:
           # - image: alpine:latest
           # TODO: Changable
-          - image: ruby:2.5-alpine
+          - image: cagedata/rubocop
     commands:
       install:
         steps:
