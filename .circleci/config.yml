@@ -3,7 +3,7 @@ description: # The purpose of this orb
 orbs:
   yasuhiroki:
     orbs:
-      reviewdog: yasuhrioki/reviewdog@dev
+      reviewdog: yasuhiroki/reviewdog@dev
     executors:
       reviewdog:
         docker:
@@ -22,8 +22,8 @@ orbs:
               chmod +x /usr/local/bin/reviewdog
           - save_cache:
               key: reviewdog-0.9.8
-        paths:
-          - /usr/local/bin/reviewdog
+              paths:
+                - /usr/local/bin/reviewdog
       reviewdog:
         steps:
           - run: reviewdog --help
