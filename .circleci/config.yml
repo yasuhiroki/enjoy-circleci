@@ -17,7 +17,7 @@ orbs:
               chmod +x /usr/local/bin/reviewdog
       reviewdog:
         steps:
-          - run: ./reviewdog --help
+          - run: reviewdog --help
     jobs:
       reviewdog:
         executor: default
