@@ -1,0 +1,60 @@
+executors:
+  python:
+    docker:
+      - image: circleci/python:3
+    working_directory: ~/app
+  golang:
+    docker:
+      - image: circleci/golang:1.11
+    working_directory: ~/app
+    environment:
+      - GOPATH: /home/circleci/go
+      - GO111MODULE: "on"
+
+commands:
+  awscli_setup:
+    steps:
+      - restore_cache:
+          key: cloudformation-deps-{{ .Environment.CIRCLECI_CACHE }}-{{ .Branch }}
+      - run: |
+          python3 -m venv venv
+          . venv/bin/activate
+          pip install awscli
+      - save_cache:
+          key: cloudformation-deps-{{ .Environment.CIRCLECI_CACHE }}-{{ .Branch }}
+          paths:
+            - "venv"
+  golang_setup:
+    steps:
+      - restore_cache:
+          key: go-module-{{ .Environment.CIRCLECI_CACHE }}-{{ .Branch }}
+      - run:
+          name: download go cli tools
+          command: |
+            go get golang.org/x/lint/golint
+            # go test の結果を CircleCI の store_test_results で読み取るため JUnit形式の出力に変換するツール
+            go get github.com/jstemmer/go-junit-report
+      - save_cache:
+          key: go-module-{{ .Environment.CIRCLECI_CACHE }}-{{ .Branch }}
+          paths:
+            - /home/circleci/go
+
+version: 2.1
+jobs:
+  awscli:
+    executor: python
+    steps:
+      - checkout
+      - awscli_setup
+  go:
+    executor: golang
+    steps:
+      - checkout
+      - golang_setup
+
+workflows:
+  something:
+    jobs:
+      - awscli
+      - go
+
