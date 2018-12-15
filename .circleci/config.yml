@@ -13,15 +13,15 @@ orbs:
               keys:
                 - reviewdog-0.9.8
           - run: |
-              test -f /usr/local/bin/reviewdog \
+              test -f ./reviewdog \
                 || \
-              wget https://github.com/haya14busa/reviewdog/releases/download/0.9.8/reviewdog_linux_amd64 -O /usr/local/bin/reviewdog \
+              wget https://github.com/haya14busa/reviewdog/releases/download/0.9.8/reviewdog_linux_amd64 -O ./reviewdog \
                 && \
-              chmod +x /usr/local/bin/reviewdog
+              chmod +x ./reviewdog
           - save_cache:
               key: reviewdog-0.9.8
               paths:
-                - /usr/local/bin/reviewdog
+                - ./reviewdog
       reviewdog:
         steps:
           - run: reviewdog --help
