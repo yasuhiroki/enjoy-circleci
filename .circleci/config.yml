@@ -4,10 +4,13 @@ orbs:
   yasuhiroki:
     executors:
       default:
+        parameters:
+          linter_image:
+            description: Linter executable image
+            type: string
+            default: alpine:latest
         docker:
-          # - image: alpine:latest
-          # TODO: Changable
-          - image: cagedata/rubocop
+          - image: <<parameters.linter_image>>
     commands:
       install:
         steps:
@@ -35,6 +38,10 @@ orbs:
           lint_result_file_path:
             description: Lint result file path
             type: string
+          linter_image:
+            description: Linter executable image
+            type: string
+            default: alpine:latest
         executor: default
         steps:
           - steps: <<parameters.run_linter_steps>>
@@ -50,7 +57,6 @@ commands:
         type: string
     steps:
       - checkout
-      - run: gem install rubocop
       - run: rubocop --out <<parameters.lint_result_file_path>> || true
       - store_artifacts:
           path: <<parameters.lint_result_file_path>>
@@ -60,6 +66,7 @@ workflows:
   main:
     jobs:
       - yasuhiroki/reviewdog:
+          linter_image: cagedata/rubocop
           run_linter_steps:
             - lint:
                 lint_result_file_path: res.txt
