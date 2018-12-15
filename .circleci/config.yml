@@ -2,8 +2,6 @@ description: # The purpose of this orb
 
 orbs:
   yasuhiroki:
-    orbs:
-      reviewdog: yasuhiroki/reviewdog@dev
     executors:
       reviewdog:
         docker:
