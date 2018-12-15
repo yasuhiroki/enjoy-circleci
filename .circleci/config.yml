@@ -15,10 +15,9 @@ orbs:
               wget https://github.com/haya14busa/reviewdog/releases/download/0.9.11/reviewdog_linux_amd64 -O /usr/local/bin/reviewdog \
                 && \
               chmod +x /usr/local/bin/reviewdog
-          - run: ls -l /usr/local/bin/reviewdog
       reviewdog:
         steps:
-          - run: ls -l /usr/local/bin/reviewdog
+          - run: echo $PATH
           - run: cat lint-result.txt | reviewdog -f=rubocop -reporter=github-pr-review
     jobs:
       reviewdog:
