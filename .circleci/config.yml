@@ -29,10 +29,9 @@ jobs:
   CircleCI_User_Community:
     executor: a
     steps:
-      - run: apt install base64
       - run:
           command: |
-            echo "Q2lyY2xlQ0kgVXNlciBDb21tdW5pcnkg44Gu6YGL5Za244Oh44Oz44OQ44O8Cg==" | baes64 -d
+            echo "CircleCI User Communiry の運営メンバー"
             v=2 eval echo 'CircleCI は $((i--)).$((--i)) から使い始めた.'
   Vim:
     executor: a
