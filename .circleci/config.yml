@@ -11,19 +11,10 @@ commands:
       - run: echo
 
 jobs:
-  Name:
-    executor: a
-    steps: [ a ]
   yasuhiroki:
     executor: a
     steps: [ a ]
-  Community:
-    executor: a
-    steps: [ a ]
   CircleCI_User_Community:
-    executor: a
-    steps: [ a ]
-  Favorite:
     executor: a
     steps: [ a ]
   Vim:
@@ -36,41 +27,24 @@ jobs:
     executor: a
     steps: [ a ]
 
-  r1:
-    executor: a
-    steps: [ a ]
-  r2:
-    executor: a
-    steps: [ a ]
-  r3:
-    executor: a
-    steps: [ a ]
-
 workflows:
   introduce:
     jobs:
-      - Name
       - yasuhiroki:
-          requires:
-            - Name
+          name: "@yasuhiroki"
 
-      - Community
       - CircleCI_User_Community:
+          name: CircleCI UC
           requires:
-            - yasuhiroki
-            - Community
+            - "@yasuhiroki"
 
-      - Favorite
       - Vim:
           requires:
-            - CircleCI_User_Community
-            - Community
+            - CircleCI UC
       - ShellScript:
           requires:
-            - CircleCI_User_Community
-            - Community
+            - CircleCI UC
       - Automation:
           name: 自動化
           requires:
-            - CircleCI_User_Community
-            - Community
+            - CircleCI UC
