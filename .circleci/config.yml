@@ -49,30 +49,21 @@ jobs:
 workflows:
   introduce:
     jobs:
-      - r1
-      - Name:
-          requires:
-            - r1
+      - Name
       - yasuhiroki:
           requires:
             - Name
 
-      - r2:
-          requires:
-            - r1
       - Community:
           requires:
-            - r2
+            - yasuhiroki
       - CircleCI_User_Community:
           requires:
             - Community
 
-      - r3:
-          requires:
-            - r2
       - Favorite:
           requires:
-            - r3
+            - Community
       - Vim:
           requires:
             - Favorite
