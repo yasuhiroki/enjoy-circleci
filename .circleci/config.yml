@@ -16,6 +16,7 @@ jobs:
     steps:
       - run:
           command: |
+            #!/bin/bash
             echo "yasuhiroki"
             echo "- Tw: @duck_yasuhiroki"
             echo
@@ -31,6 +32,7 @@ jobs:
     steps:
       - run:
           command: |
+            #!/bin/bash
             echo "CircleCI User Communiry の運営メンバー"
             v=2 eval echo 'CircleCI は $((i--)).$((--i)) から使い始めた.'
   Vim:
@@ -38,12 +40,14 @@ jobs:
     steps:
       - run:
           command: |
+            #!/bin/bash
             { Vim | is | my | MOST | favorite | editor; } |& awk '{print $2}' | tr -d : | paste -sd ' '
   ShellScript:
     executor: a
     steps:
       - run:
           command: |
+            #!/bin/bash
             n=1 y='echo CircleCI User Community 第%d回 1>&2\n' s='n=%d y=%s s=%s eval $\47printf "${y}${s}\\n" "${n}" "$((++n))" "${y@Q}" "${s@Q}"\47' eval $'printf "${y}${s}\\n" "${n}" "$((++n))" "${y@Q}" "${s@Q}"' | bash | bash
   Automation:
     executor: a
