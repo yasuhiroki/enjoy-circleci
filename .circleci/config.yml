@@ -26,6 +26,10 @@ jobs:
   Automation:
     executor: a
     steps: [ a ]
+  Evil:
+    executor: a
+    steps:
+      - run: "false"
 
 workflows:
   introduce:
@@ -46,5 +50,9 @@ workflows:
             - CircleCI UC
       - Automation:
           name: 自動化
+          requires:
+            - CircleCI UC
+      - Evil:
+          name: 非効率な繰り返し作業
           requires:
             - CircleCI UC
