@@ -1,0 +1,28 @@
+version: 2.1
+
+executors:
+  a:
+    docker:
+      - image: docker:17.05.0-ce-git
+
+commands:
+  a:
+    steps:
+      - run: echo
+
+jobs:
+  name:
+    executor: a
+    steps: [ a ]
+  yasuhiroki:
+    executor: a
+    steps: [ a ]
+
+workflows:
+  introduce:
+    jobs:
+      - name
+      - yasuhiroki:
+          requires:
+            - name
+
