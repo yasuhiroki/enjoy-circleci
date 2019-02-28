@@ -56,7 +56,6 @@ workflows:
 
       - Community
       - CircleCI_User_Community:
-          name: CircleCI UC
           requires:
             - yasuhiroki
             - Community
