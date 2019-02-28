@@ -36,18 +36,43 @@ jobs:
     executor: a
     steps: [ a ]
 
+  r1:
+    executor: a
+    steps: [ a ]
+  r2:
+    executor: a
+    steps: [ a ]
+  r3:
+    executor: a
+    steps: [ a ]
+
 workflows:
   introduce:
     jobs:
-      - Name
+      - r1
+      - Name:
+          requires:
+            - r1
       - yasuhiroki:
           requires:
             - Name
-      - Community
+
+      - r2:
+          requires:
+            - r1
+      - Community:
+          requires:
+            - r2
       - CircleCI_User_Community:
           requires:
             - Community
-      - Favorite
+
+      - r3:
+          requires:
+            - r2
+      - Favorite:
+          requires:
+            - r3
       - Vim:
           requires:
             - Favorite
