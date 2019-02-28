@@ -13,19 +13,44 @@ commands:
 jobs:
   yasuhiroki:
     executor: a
-    steps: [ a ]
+    steps:
+      - run:
+          command: |
+            echo "yasuhiroki"
+            echo "- Tw: @duck_yasuhiroki"
+            echo
+            echo "Yasuhiro Kiyota"
+            echo "YASUHIRO KIyota"
+            echo "YASUHIRO KI"
+            echo "yasuhiroki"
+            echo
+            echo "cool."
+
   CircleCI_User_Community:
     executor: a
-    steps: [ a ]
+    steps:
+      - run:
+          command: |
+            echo "Q2lyY2xlQ0kgVXNlciBDb21tdW5pcnkg44Gu6YGL5Za244Oh44Oz44OQ44O8Cg==" | baes64 -d
+            v=2 eval echo 'CircleCI は $((i--)).$((--i)) から使い始めた.'
   Vim:
     executor: a
-    steps: [ a ]
+    steps:
+      - run:
+          command: |
+            { Vim | is | my | MOST | favorite | editor; } |& awk '{print $2}' | tr -d : | paste -sd ' '
   ShellScript:
     executor: a
-    steps: [ a ]
+    steps:
+      - run:
+          command: |
+            n=1 y='echo CircleCI User Community 第%d回 1>&2\n' s='n=%d y=%s s=%s eval $\47printf "${y}${s}\\n" "${n}" "$((++n))" "${y@Q}" "${s@Q}"\47' eval $'printf "${y}${s}\\n" "${n}" "$((++n))" "${y@Q}" "${s@Q}"' | bash | bash
   Automation:
     executor: a
-    steps: [ a ]
+    steps:
+      - run:
+          command: |
+            : 何もしないことこそ究極の自動化
   Evil:
     executor: a
     steps:
