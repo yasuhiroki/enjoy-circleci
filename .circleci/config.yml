@@ -51,6 +51,8 @@ workflows:
     jobs:
       - Name
       - yasuhiroki:
+          requires:
+            - Name
 
       - Community
       - CircleCI_User_Community:
