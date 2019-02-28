@@ -53,6 +53,6 @@ workflows:
           requires:
             - CircleCI UC
       - Evil:
-          name: 非効率な繰り返し作業
+          name: 非効率な作業
           requires:
             - CircleCI UC
