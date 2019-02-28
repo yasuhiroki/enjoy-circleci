@@ -3,7 +3,7 @@ version: 2.1
 executors:
   a:
     docker:
-      - image: docker:17.05.0-ce-git
+      - image: bash:4.4
 
 commands:
   a:
