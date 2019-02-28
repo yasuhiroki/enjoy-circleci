@@ -11,7 +11,7 @@ commands:
       - run: echo
 
 jobs:
-  name:
+  アカウント:
     executor: a
     steps: [ a ]
   yasuhiroki:
@@ -21,7 +21,7 @@ jobs:
 workflows:
   introduce:
     jobs:
-      - name
+      - アカウント
       - yasuhiroki:
           requires:
             - name
