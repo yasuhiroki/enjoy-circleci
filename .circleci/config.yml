@@ -11,18 +11,51 @@ commands:
       - run: echo
 
 jobs:
-  アカウント:
+  Name:
     executor: a
     steps: [ a ]
   yasuhiroki:
+    executor: a
+    steps: [ a ]
+  Community:
+    executor: a
+    steps: [ a ]
+  CircleCI_User_Community:
+    executor: a
+    steps: [ a ]
+  Favorite:
+    executor: a
+    steps: [ a ]
+  Vim:
+    executor: a
+    steps: [ a ]
+  ShellScript:
+    executor: a
+    steps: [ a ]
+  Automation:
     executor: a
     steps: [ a ]
 
 workflows:
   introduce:
     jobs:
-      - アカウント
+      - Name
       - yasuhiroki:
           requires:
-            - name
+            - Name
+      - Community
+      - CircleCI_User_Community:
+          requires:
+            - Community
+      - Favorite
+      - Vim:
+          requires:
+            - Favorite
+      - ShellScript:
+          requires:
+            - Favorite
+      - Automation:
+          name: 自動化
+          requires:
+            - Favorite
 
