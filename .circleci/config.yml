@@ -58,23 +58,20 @@ workflows:
       - CircleCI_User_Community:
           name: CircleCI UC
           requires:
-            - Name
+            - yasuhrioki
             - Community
 
       - Favorite
       - Vim:
           requires:
-            - Favorite
-            - Name
+            - CircleCI_User_Community
             - Community
       - ShellScript:
           requires:
-            - Favorite
-            - Name
+            - CircleCI_User_Community
             - Community
       - Automation:
           name: 自動化
           requires:
-            - Favorite
-            - Name
+            - CircleCI_User_Community
             - Community
