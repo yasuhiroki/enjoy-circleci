@@ -51,27 +51,28 @@ workflows:
     jobs:
       - Name
       - yasuhiroki:
+
+      - Community
+      - CircleCI_User_Community:
+          name: CircleCI UC
           requires:
             - Name
-
-      - Community:
-          requires:
-            - yasuhiroki
-      - CircleCI_User_Community:
-          requires:
             - Community
 
-      - Favorite:
-          requires:
-            - Community
+      - Favorite
       - Vim:
           requires:
             - Favorite
+            - Name
+            - Community
       - ShellScript:
           requires:
             - Favorite
+            - Name
+            - Community
       - Automation:
           name: 自動化
           requires:
             - Favorite
-
+            - Name
+            - Community
