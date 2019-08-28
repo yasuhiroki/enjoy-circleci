@@ -21,8 +21,7 @@ jobs:
             echo "- Tw: @duck_yasuhiroki"
             echo
             echo "Yasuhiro Kiyota"
-            echo "YASUHIRO KIyota"
-            echo "YASUHIRO KI"
+            echo "Yasuhiro Ki yota"
             echo "yasuhiroki"
             echo
             echo "cool."
@@ -42,6 +41,9 @@ jobs:
           shell: /usr/local/bin/bash
           command: |
             { Vim | is | my | MOST | favorite | editor; } |& awk '{print $2}' | tr -d : | paste -sd ' '
+      - run:
+          command: |
+            echo Creator of circleci.vim plugin
   ShellScript:
     executor: a
     steps:
