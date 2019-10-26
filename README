@@ -1,3 +1,11 @@
 # circleci-enjoy
 
 This is my test repository
+
+# pack
+
+circleci config pack で分割された yaml から config.yml を作るのを試す
+
+```bash
+$ circleci config pack .circleci/src > .circleci/config.yml
+```

@@ -1,0 +1,15 @@
+jobs:
+  build:
+    docker:
+    - image: circleci/ruby:2.4-node
+    steps:
+    - checkout
+    - inline/env
+orbs:
+  inline:
+    commands:
+      env:
+        steps:
+        - run: env
+version: 2.1
+

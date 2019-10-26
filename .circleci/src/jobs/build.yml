@@ -1,0 +1,7 @@
+docker:
+  - image: circleci/ruby:2.4-node
+steps:
+  - checkout
+  - inline/env
+
+
