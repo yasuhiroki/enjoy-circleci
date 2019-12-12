@@ -1,0 +1,23 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run:
+          command: |
+            git clone https://github.com/actions/stale.git
+            cd stale
+            npm install
+            npm run build
+            node lib/main.js
+          environment:
+            INPUT_REPO-TOKEN: XXX
+            INPUT_DAYS-BEFORE-STALE: 1
+            INPUT_DAYS-BEFORE-CLOSE: 1
+            INPUT_STALE-ISSUE-LABEL: stale
+            INPUT_STALE-PR-LABEL: stale
+            INPUT_OPERATIONS-PER-RUN: 30
+            GITHUB_REPOSITORY: yasuhiroki/enjoy-circleci
