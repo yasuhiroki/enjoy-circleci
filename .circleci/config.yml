@@ -12,12 +12,19 @@ jobs:
             cd stale
             npm install ./toolkit/*
             npm run build
-            node lib/main.js
+            env INPUT_REPO-TOKEN=${GITHUB_TOKEN} node lib/main.js
           environment:
-            INPUT_REPO-TOKEN: XXX
+            # INPUT_REPO-TOKEN: xxx
             INPUT_DAYS-BEFORE-STALE: 1
             INPUT_DAYS-BEFORE-CLOSE: 1
             INPUT_STALE-ISSUE-LABEL: stale
             INPUT_STALE-PR-LABEL: stale
             INPUT_OPERATIONS-PER-RUN: 30
             GITHUB_REPOSITORY: yasuhiroki/enjoy-circleci
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build:
+          context: yasuhiroki
