@@ -10,7 +10,7 @@ jobs:
           command: |
             git clone https://github.com/actions/stale.git
             cd stale
-            npm install
+            npm install ./toolkit/*
             npm run build
             node lib/main.js
           environment:
