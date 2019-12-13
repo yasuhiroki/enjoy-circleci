@@ -5,12 +5,24 @@ jobs:
     docker:
       - image: circleci/node:latest
     steps:
-      - checkout
       - run:
           command: |
             git clone https://github.com/actions/stale.git
+      - restore_cache:
+          keys:
+            - node_modules-{{checksum "stale/package.json"}}
+            - node_modules
+      - run:
+          command: |
             cd stale
             npm install ./toolkit/*
+      - save_cache:
+          key: node_modules-{{checksum "stale/package.json"}}
+          paths:
+            - stale/node_modules
+      - run:
+          command: |
+            cd stale
             npm run build
             env INPUT_REPO-TOKEN=${GITHUB_TOKEN} node lib/main.js
           environment:
