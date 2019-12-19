@@ -1,19 +1,28 @@
 version: 2.1
 
 jobs:
-  job_1:
+  job:
+    parameters:
+      foo:
+        type: string
+      bool_true:
+        type: boolean
+        default: true
+      bool_false:
+        type: boolean
+        default: false
     docker:
       - image: circleci/node:latest
     steps:
-      - checkout
-  job_2:
-    docker:
-      - image: circleci/node:latest
-    steps:
-      - checkout
+      - run: |
+          echo 1 <<parameters.foo>>
+          echo 2 <<#parameters.foo>><<parameters.foo>><</parameters.foo>>
+
+          echo 3 <<#parameters.bool_true>><<parameters.bool_true>><</parameters.bool_true>>
+          echo 4 <<#parameters.bool_false>><<parameters.bool_false>><</parameters.bool_false>>
 
 workflows:
-  workflow_1:
+  workflow:
     jobs:
-      - job_1
-      - job_2
+      - job:
+          foo: test
