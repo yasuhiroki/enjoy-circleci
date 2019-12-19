@@ -1,0 +1,19 @@
+version: 2.1
+
+jobs:
+  job_1:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+  job_2:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+
+workflows:
+  workflow_1:
+    jobs:
+      - job_1
+      - job_2
