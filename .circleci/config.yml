@@ -58,6 +58,7 @@ jobs:
     docker:
       - image: circleci/node:latest
     steps:
+      - checkout
       - hub/install
       - hub/create-release:
           message: test
