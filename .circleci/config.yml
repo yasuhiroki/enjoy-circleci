@@ -5,6 +5,8 @@ jobs:
     parameters:
       foo:
         type: string
+      bar:
+        type: string
       bool_true:
         type: boolean
         default: true
@@ -17,9 +19,10 @@ jobs:
       - run: |
           echo 1 <<parameters.foo>>
           echo 2 <<#parameters.foo>><<parameters.foo>><</parameters.foo>>
+          echo 3 <<#parameters.bar>><<parameters.bar>><</parameters.bar>>
 
-          echo 3 <<#parameters.bool_true>><<parameters.bool_true>><</parameters.bool_true>>
-          echo 4 <<#parameters.bool_false>><<parameters.bool_false>><</parameters.bool_false>>
+          echo 4 <<#parameters.bool_true>><<parameters.bool_true>><</parameters.bool_true>>
+          echo 5 <<#parameters.bool_false>><<parameters.bool_false>><</parameters.bool_false>>
 
 workflows:
   workflow:
