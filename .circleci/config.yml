@@ -9,8 +9,7 @@ jobs:
   setup:
     executor: continuation/default
     steps:
-      - run: pwd
-      - run: ls -l
+      - checkout
       - continuation/continue:
           configuration_path: .circleci/echo.yml
 
