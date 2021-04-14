@@ -9,7 +9,6 @@ jobs:
   setup:
     executor: continuation/default
     steps:
-      - checkout
       - continuation/continue:
           configuration_path: .circleci/echo.yml
 
