@@ -1,0 +1,20 @@
+version: 2.1
+
+jobs:
+  job_1:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - echo "echo"
+  job_2:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - echo "echo"
+
+workflows:
+  workflow_1:
+    jobs:
+      - job_1
+      - job_2
+
