@@ -24,6 +24,9 @@ jobs:
 
 workflows:
   workflow_1:
+    when:
+      not:
+        equal: [ scheduled_pipeline, << pipeline.trigger_source >> ]
     jobs:
       - job_1
       - job_2
