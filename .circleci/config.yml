@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  shellcheck: circleci/shellcheck@3.2.0
+
 jobs:
   job_1:
     docker:
@@ -8,19 +11,14 @@ jobs:
       - checkout
   job_2:
     docker:
-      - image: circleci/node:latest
-    parameters:
-      hoge:
-        type: string
-        default: foo
+      - image: cimg/base:stable
     steps:
       - checkout
-      - run: echo << parameters.hoge >>
-      - run: echo << parameters.hoge >>>
-      - run: echo \<<< parameters.hoge >>
-      - run: echo \<<< parameters.hoge >>>
-      # - run: echo <<< parameters.hoge >> # <- validation error
-      # - run: echo <<< parameters.hoge >>> # <- validation error
+      - shellcheck/install
+      - run:
+          command: shellcheck --help
+          name: Run Shellcheck command
+
 
 workflows:
   workflow_1:
