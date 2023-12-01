@@ -27,3 +27,11 @@ workflows:
     jobs:
       - job_1
       - job_2
+  workflow_2:
+    when:
+      and:
+        - equal: [ scheduled_pipeline, << pipeline.trigger_source >> ]
+        - equal: [ daily_build, << pipeline.schedule.name >> ]
+    jobs:
+      - job_1
+      - job_2
