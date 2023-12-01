@@ -36,3 +36,14 @@ workflows:
     jobs:
       - job_1
       - job_2
+  workflows_3:
+    triggers:
+      - schedule:
+          cron: "40 * * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - job_1
+      - job_2
