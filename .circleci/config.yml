@@ -47,7 +47,15 @@ jobs:
       - command_2:
           VAR: VAR
 
+  job_2:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - command_2:
+          VAR: VAR
+
 workflows:
   workflow_1:
     jobs:
       - job_1
+      - job_2
