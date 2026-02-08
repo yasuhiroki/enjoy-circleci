@@ -32,6 +32,13 @@ jobs:
       - command_1:
           VAR: $VAR
 
+      # print
+      - run: |
+          echo 'export VAR="can you see?"' >> $BASH_ENV
+      - run: echo $VAR
+      - command_1:
+          VAR: $VAR
+
 workflows:
   workflow_1:
     jobs:
