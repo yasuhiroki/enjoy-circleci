@@ -13,20 +13,21 @@ jobs:
     docker:
       - image: cimg/base:stable
     steps:
+      # no print anything
       - run: echo $VAR
       - command_1:
           VAR: $VAR
 
+      # no print anything
       - run: |
           VAR="can you see?"
-          echo $VAR
       - run: echo $VAR
       - command_1:
           VAR: $VAR
 
+      # no print anything
       - run: |
           export VAR="can you see?"
-          echo $VAR
       - run: echo $VAR
       - command_1:
           VAR: $VAR
