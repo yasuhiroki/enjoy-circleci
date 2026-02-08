@@ -6,7 +6,7 @@ commands:
       VAR:
         type: string
     steps:
-      - run: echo $VAR
+      - run: echo <<parameters.VAR>>
 
 jobs:
   job_1:
