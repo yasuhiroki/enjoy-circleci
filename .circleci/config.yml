@@ -7,6 +7,12 @@ commands:
         type: string
     steps:
       - run: echo <<parameters.VAR>>
+  command_2:
+    parameters:
+      VAR:
+        type: env_var_name
+    steps:
+      - run: echo ${<<parameters.VAR>>}
 
 jobs:
   job_1:
@@ -38,6 +44,15 @@ jobs:
       - run: echo $VAR
       - command_1:
           VAR: $VAR
+      - command_2:
+          VAR: VAR
+
+  job_2:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - command_2:
+          VAR: VAR
 
 workflows:
   workflow_1:
