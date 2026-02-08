@@ -14,19 +14,22 @@ jobs:
       - image: cimg/base:stable
     steps:
       - run: echo $VAR
-      - command_1
+      - command_1:
+          VAR: $VAR
 
       - run: |
           VAR="can you see?"
           echo $VAR
       - run: echo $VAR
-      - command_1
+      - command_1:
+          VAR: $VAR
 
       - run: |
           export VAR="can you see?"
           echo $VAR
       - run: echo $VAR
-      - command_1
+      - command_1:
+          VAR: $VAR
 
 workflows:
   workflow_1:
