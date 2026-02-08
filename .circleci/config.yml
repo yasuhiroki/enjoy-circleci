@@ -1,38 +1,34 @@
 version: 2.1
 
-orbs:
-  shellcheck: circleci/shellcheck@3.2.0
+commands:
+  command_1:
+    parameters:
+      VAR:
+        type: string
+    steps:
+      - run: echo $VAR
 
 jobs:
   job_1:
     docker:
-      - image: circleci/node:latest
-    steps:
-      - checkout
-  job_2:
-    docker:
       - image: cimg/base:stable
     steps:
-      - checkout
-      - shellcheck/install
-      - run:
-          command: shellcheck --help
-          name: Run Shellcheck command
+      - run: echo $VAR
+      - command_1
 
+      - run: |
+          VAR="can you see?"
+          echo $VAR
+      - run: echo $VAR
+      - command_1
+
+      - run: |
+          export VAR="can you see?"
+          echo $VAR
+      - run: echo $VAR
+      - command_1
 
 workflows:
   workflow_1:
-    when:
-      not:
-        equal: [ scheduled_pipeline, << pipeline.trigger_source >> ]
     jobs:
       - job_1
-      - job_2
-  workflow_2:
-    when:
-      and:
-        - equal: [ scheduled_pipeline, << pipeline.trigger_source >> ]
-        - equal: [ daily_build, << pipeline.schedule.name >> ]
-    jobs:
-      - job_1
-      - job_2
